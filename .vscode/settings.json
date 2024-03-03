@@ -1,6 +1,12 @@
 {
   "files.associations": {
     "complex": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "barrier": "cpp",
+    "latch": "cpp",
+    "limits": "cpp",
+    "semaphore": "cpp",
+    "chrono": "cpp",
+    "random": "cpp"
   }
 }
