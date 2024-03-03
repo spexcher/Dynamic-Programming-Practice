@@ -3,7 +3,7 @@
 AUTHOR: spexcher
 Name: Gourab Modak
 email: spexcher@gmail.com
-Institution: Indian Institute of Technology Madras(BS UG Data Science 4 year) + Jalpaiguri Government Engineering College B. Tech UG CSE 4 year)
+Institution: Indian Institute of Technology Madras(BS UG Data Science 4 year) + Jalpaiguri Government Engineering College (B. Tech UG CSE 4 year)
 Linktree: https://linktr.ee/spexcher
 Github: https://github.com/spexcher/
 linkedin : https://www.linkedin.com/in/gourabmodak/
@@ -17,8 +17,7 @@ using namespace std;
 #include <ext/pb_ds/tree_policy.hpp>
 using namespace __gnu_pbds;
 template <typename T>
-using pbds =
-    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
 #ifndef ONLINE_JUDGE
 #define eprintf(...)                  \
@@ -47,10 +46,10 @@ using pll = pair<ll, ll>;
 #define pb push_back
 #define ppb pop_back
 
-// #define int long long
-//  disable this to storage constrained problems
-//  now int behaves as it
-//  but if you need long long then use ll
+#define int long long
+// disable this to storage constrained problems
+// now int behaves as it
+// but if you need long long then use ll
 #define sqrt(x) sqrtl((x))
 #define ceil(x) ceill((x))
 #define floor(x) floorl((x))
@@ -114,8 +113,7 @@ using pll = pair<ll, ll>;
 #define gc getchar_unlocked
 #define fo(i, n) for (int i = 0; i < n; i++)
 #define forr(i, n) for (int i = n - 1; i >= 0; i--)
-#define Fo(i, k, n) \
-    for (int i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
+#define Fo(i, k, n) for (int i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
 #define setbits(n) __builtin_popcountll(n)
 #define counttz(n) __builtin_ctzll(n)
 #define countlz(n) __builtin_clzll(n)
@@ -126,13 +124,9 @@ void modadd(int &a, int b) { a = ((a % MOD) + (b % MOD)) % MOD; }
 void modsub(int &a, int b) { a = ((a % MOD) - (b % MOD) + MOD) % MOD; }
 void modmul(int &a, int b) { a = ((a % MOD) * (b % MOD)) % MOD; }
 
-//-------------------- take ip/op like vector,pairs directly!
-//-----------------------------
+//-------------------- take ip/op like vector,pairs directly! -----------------------------
 template <typename typC, typename typD>
-istream &operator>>(istream &cin, pair<typC, typD> &a)
-{
-    return cin >> a.first >> a.second;
-}
+istream &operator>>(istream &cin, pair<typC, typD> &a) { return cin >> a.first >> a.second; }
 template <typename typC>
 istream &operator>>(istream &cin, vector<typC> &a)
 {
@@ -141,10 +135,7 @@ istream &operator>>(istream &cin, vector<typC> &a)
     return cin;
 }
 template <typename typC, typename typD>
-ostream &operator<<(ostream &cout, const pair<typC, typD> &a)
-{
-    return cout << a.first << ' ' << a.second;
-}
+ostream &operator<<(ostream &cout, const pair<typC, typD> &a) { return cout << a.first << ' ' << a.second; }
 template <typename typC, typename typD>
 ostream &operator<<(ostream &cout, const vector<pair<typC, typD>> &a)
 {
@@ -169,7 +160,10 @@ double getCurrentTime()
 {
     return (double)(clock() - startTime) / CLOCKS_PER_SEC;
 }
-ll myRand(ll B) { return (ull)rng() % B; }
+ll myRand(ll B)
+{
+    return (ull)rng() % B;
+}
 // Check
 bool isPrime(ll n)
 {
@@ -242,8 +236,14 @@ ll fpow(ll x, ll y)
 }
 ll inv(ll a, ll p = mod) { return fpow(a, p - 2); }
 // conversions
-ll str_to_num(string s) { return stoi(s); }
-string num_to_str(ll num) { return to_string(num); }
+ll str_to_num(string s)
+{
+    return stoi(s);
+}
+string num_to_str(ll num)
+{
+    return to_string(num);
+}
 #ifndef ONLINE_JUDGE
 #define debug(x)       \
     cerr << #x << " "; \
@@ -253,7 +253,10 @@ string num_to_str(ll num) { return to_string(num); }
 #define debug(x)
 #endif
 
-void _print(ll t) { cerr << t; }
+void _print(ll t)
+{
+    cerr << t;
+}
 void _print(string t) { cerr << t; }
 void _print(char t) { cerr << t; }
 void _print(lld t) { cerr << t; }
@@ -323,4 +326,47 @@ void _print(map<T, V> v)
     }
     cerr << "]";
 }
+void solve();
+signed main()
+{
+    startTime = clock();
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int t = 1;
+    cin >> t;
+    for (int i = 1; i <= t; i++)
+    {
+        eprintf("--- Case #%lld start ---\n", i);
+        eprintf("Case #%lld: ", i);
+        solve();
+        eprintf("--- Case #%lld end ---\n", i);
+        eprintf("time = %.5lf\n", getCurrentTime());
+        eprintf("++++++++++++++++++++\n");
+
+        // solve();
+    }
+
+    return 0;
+}
 //-----------------------------End Snippet--------------------------
+int ETF(int n)
+{
+    vi phi(n + 1, 0);
+    phi[0] = 0;
+    phi[1] = 1;
+    for (int i = 2; i <= n; i++)
+        phi[i] = i;
+    for (int i = 2; i <= n; i++)
+        if (phi[i] == i)
+            for (int j = i; j <= n; j += i)
+                phi[j] = phi[j] - phi[j] / i;
+    return phi[n];
+}
+
+void solve()
+{
+    int n;
+    n = 10;
+    print(ETF(n));
+}
